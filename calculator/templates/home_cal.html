@@ -1,0 +1,18 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Calculator
+{% endblock %}
+{% block content %}
+    <div class="position-relative overflow-hidden pt-3 text-center bg-light">
+        <div class="col-md-6 p-5 mx-auto m-5">
+            <img src="{{ url_for('static', filename='logo.png') }}" width="100" height="100" alt="">
+            <h1 class="d-flex justify-content-md-center align-items-center m-5" style="color: #8bc34a">Welcome to Calorie Calculator</h1>
+            <h5 class="d-flex justify-content-md-center align-items-center my-5" style="color: #8bc34a">Calculate your budget and start tracking your calorie intake and expenditure today.
+                Create an account now to save your trackings!</h5>
+            <a class="d-flex justify-content-md-center align-items-center m-3" href="{{ url_for('register_page') }}">Yes. I want to create an account to track my calorie intake and consumptions.</a>
+            <a class="d-flex justify-content-md-center align-items-center m-3" href="{{ url_for('budget_page') }}">I just want to do some quick counting.</a>
+            <br><br><br>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,339 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Intake Calculator
+{% endblock %}
+{% block content %}
+<div class="position-relative overflow-hidden pt-3 bg-light text-center">
+   <div class="container">
+        <div class="row align-text-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 h2 mb-3 font-weight-normal">
+                    Calorie Expenditure Calculator
+            </div>
+            <div class="col-md-3 h3 mb-3 font-weight-normal text-right">
+                    Calorie Expenditure:
+            </div>
+            <div class="col-md-3 h3 mb-3 font-weight-bold font-italic text-left" style="color: #8bc34a">
+                {{ session['expenditure'] or 0 }}
+            </div>
+            </div>
+        </div>
+    <div class="row mb-3">
+        <div class="col-md-2"></div>
+        <h6 class="col-md-6 mb-3 font-weight-normal">The Calorie Intake Calculator can be used to estimate the number of calories a person consumes by exercising each day.</h6>
+    </div>
+    <form method="POST" class="form-register">
+        {{ form.hidden_tag() }}
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.swimming_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.swimming_amt(class="form-control") }}
+                            {% for error in form.swimming_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.lifting_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.lifting_amt(class="form-control") }}
+                            {% for error in form.lifting_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.calisthenics_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.lifting_amt(class="form-control") }}
+                            {% for error in form.calisthenics_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.HIIT_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.HIIT_amt(class="form-control") }}
+                            {% for error in form.HIIT_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.snowboarding_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.snowboarding_amt(class="form-control") }}
+                            {% for error in form.snowboarding_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.skiing_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.skiing_amt(class="form-control") }}
+                            {% for error in form.skiing_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.golf_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.golf_amt(class="form-control") }}
+                            {% for error in form.golf_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.hockey_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.hockey_amt(class="form-control") }}
+                            {% for error in form.hockey_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                </div>
+            </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.soccer_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.soccer_amt(class="form-control") }}
+                            {% for error in form.soccer_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.badminton_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.badminton_amt(class="form-control") }}
+                            {% for error in form.badminton_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.football_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.football_amt(class="form-control") }}
+                            {% for error in form.football_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.tennis_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.tennis_amt(class="form-control") }}
+                            {% for error in form.tennis_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.baseball_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.baseball_amt(class="form-control") }}
+                            {% for error in form.baseball_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                       <div class="col-md-3">{{ form.tabletennis_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.tabletennis_amt(class="form-control") }}
+                            {% for error in form.tabletennis_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                       <div class="col-md-3">{{ form.basketball_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.basketball_amt(class="form-control") }}
+                            {% for error in form.basketball_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.volleyball_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.volleyball_amt(class="form-control") }}
+                            {% for error in form.volleyball_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.dancing_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.dancing_amt(class="form-control") }}
+                            {% for error in form.dancing_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.biking_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.biking_amt(class="form-control") }}
+                            {% for error in form.biking_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.running_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.running_amt(class="form-control") }}
+                            {% for error in form.running_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.jogging_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.jogging_amt(class="form-control") }}
+                            {% for error in form.jogging_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.walking_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.baseball_amt(class="form-control") }}
+                            {% for error in form.walking_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.skippingrope_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.skippingrope_amt(class="form-control") }}
+                            {% for error in form.skippingrope_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.martialarts_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.martialarts_amt(class="form-control") }}
+                            {% for error in form.martialarts_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.others_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.others_amt(class="form-control") }}
+                            {% for error in form.others_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >minutes(s)</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+     <div class="form-group row mt-5">
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    {{ form.submit(class="btn btn-lg btn-block btn-success", placeholder="Calculate") }}
+                </div>
+     </div>
+    </form>
+
+</div>
+
+{% endblock %}

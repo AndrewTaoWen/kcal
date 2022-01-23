@@ -1,0 +1,342 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Intake Calculator
+{% endblock %}
+{% block content %}
+<div class="position-relative overflow-hidden pt-3 bg-light text-center">
+    <div class="container">
+        <div class="row align-text-bottom">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 h2 mb-3 font-weight-normal">
+                    Calorie Intake Calculator
+            </div>
+            <div class="col-md-3 h3 mb-3 font-weight-normal text-right">
+                    Calorie Intake:
+            </div>
+            <div class="col-md-3 h3 mb-3 font-weight-bold font-italic text-left" style="color: orangered">
+                {{ session['intake'] or 0 }}
+            </div>
+            </div>
+        </div>
+    <div class="row mb-3">
+        <div class="col-md-2"></div>
+        <h6 class="col-md-6 mb-3 font-weight-normal">The Calorie Intake Calculator can be used to estimate the number of calories a person takes in from foods each day.</h6>
+    </div>
+    <form method="POST" class="form-register">
+        {{ form.hidden_tag() }}
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Breakfast</h5>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.bread_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.bread_amt(class="form-control") }}
+                            {% for error in form.bread_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >slice(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.bagel_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.bagel_amt(class="form-control") }}
+                            {% for error in form.bagel_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bagel(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.egg_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.egg_amt(class="form-control") }}
+                            {% for error in form.egg_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >egg(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.bacon_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.bacon_amt(class="form-control") }}
+                            {% for error in form.bacon_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >slice(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.yogurt_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.yogurt_amt(class="form-control") }}
+                            {% for error in form.yogurt_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >container(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.cereal_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.cereal_amt(class="form-control") }}
+                            {% for error in form.cereal_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bowl(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.oats_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.oats_amt(class="form-control") }}
+                            {% for error in form.oats_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bowl(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.othersB_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.othersB_amt(class="form-control") }}
+                            {% for error in form.othersB_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >calories</div>
+                    </div>
+                </div>
+            </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Lunch</h5>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.pizza_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.pizza_amt(class="form-control") }}
+                            {% for error in form.pizza_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >slice(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.pasta_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.pasta_amt(class="form-control") }}
+                            {% for error in form.pasta_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bowl(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.sandwich_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.sandwich_amt(class="form-control") }}
+                            {% for error in form.sandwich_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >sandwich(es)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.burger_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.burger_amt(class="form-control") }}
+                            {% for error in form.burger_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >burger(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.beef_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.beef_amt(class="form-control") }}
+                            {% for error in form.beef_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >ounce(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.chicken_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.chicken_amt(class="form-control") }}
+                            {% for error in form.chicken_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >ounce(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.pork_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.pork_amt(class="form-control") }}
+                            {% for error in form.pork_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >ounce(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.othersL_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.othersL_amt(class="form-control") }}
+                            {% for error in form.othersL_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >calories</div>
+                    </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dinner</h5>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.pizzaD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.pizzaD_amt(class="form-control") }}
+                            {% for error in form.pizzaD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >slice(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.pastaD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.pastaD_amt(class="form-control") }}
+                            {% for error in form.pastaD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bowl(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.rice_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.rice_amt(class="form-control") }}
+                            {% for error in form.rice_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >bowl(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.porkD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.porkD_amt(class="form-control") }}
+                            {% for error in form.porkD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >once(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.beefD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.beefD_amt(class="form-control") }}
+                            {% for error in form.beefD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >ounce(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.chickenD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.chickenD_amt(class="form-control") }}
+                            {% for error in form.chickenD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >ounce(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.potato_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.potato_amt(class="form-control") }}
+                            {% for error in form.potato_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >potato(s)</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-3">{{ form.othersD_amt.label() }}</div>
+                        <div class="col-md-6 text-left">
+                            {{ form.othersD_amt(class="form-control") }}
+                            {% for error in form.othersD_amt.errors %}
+                                <h6 class="small text-left text-danger">
+                                    {{error}}
+                                </h6>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 small text-left" >calories</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row mt-5">
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    {{ form.submit(class="btn btn-lg btn-block btn-success", placeholder="Calculate") }}
+                </div>
+        </div>
+    </form>
+
+</div>
+</div>
+{% endblock %}
