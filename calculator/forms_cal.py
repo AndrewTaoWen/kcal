@@ -33,6 +33,7 @@ class IntakeForm(FlaskForm):
     cereal_amt = IntegerField(label="Cereal", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     oats_amt = IntegerField(label="Oats", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     othersB_amt = IntegerField(label="Others", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
+
     pizza_amt = IntegerField(label="Pizza", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     pasta_amt = IntegerField(label="Pasta", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     sandwich_amt = IntegerField(label="Sandwich", default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
@@ -79,7 +80,6 @@ class ExpenditureForm(FlaskForm):
     HIIT_amt = IntegerField(label='HIIT', default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     skiing_amt = IntegerField(label='Skiing', default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     snowboarding_amt = IntegerField(label='Snowboarding', default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
-    expenditure = IntegerField(label='Expenditure', default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
     submit = SubmitField(label='Calculate', default=0, validators=[NumberRange(min=0, message="Amount >= 0")])
 
 class RegisterForm(FlaskForm):
