@@ -3,7 +3,7 @@ from calculator import app
 from flask import render_template, redirect, url_for, flash, request, session
 from calculator.models_cal import User, TrackingHistory
 from calculator.forms_cal import BudgetForm, IntakeForm, ExpenditureForm, RegisterForm, LoginForm, HistoryForm
-from calculator.calculator_cal import calculate_budget
+from calculator.calculator_cal import calculate_budget, calculate_intake, calculate_expen
 from calculator import db
 from flask_login import login_user, logout_user, login_required, current_user
 
@@ -35,7 +35,7 @@ def intake_page():
     form = IntakeForm()
     if form.validate_on_submit():
         # TODO Calculate expenditure
-        intake = form.bread_amt.data * 100
+        intake = calculate_intake(form)
         session['intake'] = intake
     return render_template("intake_cal.html", form=form)
 
@@ -43,10 +43,11 @@ def intake_page():
 def expenditure_page():
 
     form = ExpenditureForm()
+    bform = BudgetForm()
 
     if form.validate_on_submit():
         # TODO Calculate expenditure
-        expenditure = form.volleyball_amt.data * 15
+        expenditure = calculate_expen(form, bform)
         session['expenditure'] = expenditure
 
     return render_template("expenditure_cal.html", form=form)
