@@ -1,0 +1,16 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Calculator
+{% endblock %}
+{% block content %}
+    <div class="position-relative overflow-hidden pt-3 text-center bg-light">
+        <div class="col-md-6 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal">Welcome to Calorie Calculator</h1>
+            <p class="lead font-weight-normal">Start calculating your calorie intake and expenditure</p>
+            <a class="btn btn-primary" href="{{ url_for('budget_page') }}">Get Started</a>
+        </div>
+        <div class="product-device box-shadow d-none d-md-block"></div>
+        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
+{% endblock %}
+

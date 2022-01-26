@@ -1,0 +1,73 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Intake Calculator
+{% endblock %}
+{% block content %}
+<div class="position-relative overflow-hidden pt-3 bg-light text-center">
+    <div class="container">
+         <h1 class="h3 mb-3 font-weight-normal">
+             Calorie Expenditure Calculator
+         </h1>
+    </div>
+    <form method="POST" class="form-register">
+        {{ form.hidden_tag() }}
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-4">{{ form.b1.label() }}</div>
+                        <div class="col-md-1">{{ form.b1(class="form-control") }}</div>
+                        <div class="col-md-6 text-left">{{ form.b1_amt(class="form-control") }}</div>
+                        <div class="col-md-1 text-left">g</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-4">{{ form.b2.label() }}</div>
+                        <div class="col-md-1">{{ form.b2(class="form-control") }}</div>
+                        <div class="col-md-6 text-left">{{ form.b2_amt(class="form-control") }}</div>
+                        <div class="col-md-1 text-left">g</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-4">{{ form.b3.label() }}</div>
+                        <div class="col-md-1">{{ form.b3(class="form-control") }}</div>
+                        <div class="col-md-6 text-left">{{ form.b3_amt(class="form-control") }}</div>
+                        <div class="col-md-1 text-left">g</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-4">{{ form.b4.label() }}</div>
+                        <div class="col-md-1">{{ form.b4(class="form-control") }}</div>
+                        <div class="col-md-6 text-left">{{ form.b4_amt(class="form-control") }}</div>
+                        <div class="col-md-1 text-left">g</div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-md-4">{{ form.b5.label() }}</div>
+                        <div class="col-md-1">{{ form.b5(class="form-control") }}</div>
+                        <div class="col-md-6 text-left">{{ form.b1_amt(class="form-control") }}</div>
+                        <div class="col-md-1 text-left">g</div>
+                    </div>
+                </div>
+            </div>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row mt-2">
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                </div>
+                <div class="col-md-5"></div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

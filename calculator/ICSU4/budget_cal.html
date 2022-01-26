@@ -1,0 +1,110 @@
+{% extends 'base_cal.html' %}
+{% block title %}
+    Welcome to Calorie Budget Calculator
+{% endblock %}
+{% block content %}
+    <div class="position-relative overflow-hidden pt-3 bg-light text-center">
+        <div class="container">
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag() }}
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                   <h1 class="h3 mb-3 font-weight-normal">
+                        Calorie Budget Calculator
+                    </h1>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6 text-left">
+                   <h6>
+                        The Calorie Budget Calculator can be used to estimate the number of calories a person needs to consume each day. This calculator can also provide some simple guidelines for gaining or losing weight.
+                   </h6>
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.age.label() }}
+                </div>
+                <div class="col-md-2">
+                    {{ form.age(class="form-control", placeholder="Age") }}
+                    {% for error in form.age.errors %}
+                        <h6 class="small text-left text-danger">
+                            {{error}}
+                        </h6>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8 text-left">ages 15 - 80</div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.gender.label() }}
+                </div>
+                <div class="col-md-2">
+                    {% for subfield in form.gender %}
+                        <tr>
+                            <td>{{ subfield }}</td>
+                            <td>{{ subfield.label }}</td>
+                        </tr>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.height.label() }}
+                </div>
+                <div class="col-md-2">
+                    {{ form.height(class="form-control") }}
+                    {% for error in form.height.errors %}
+                        <h6 class="small text-left text-danger">
+                            {{error}}
+                        </h6>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8 text-left">cm</div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.weight.label() }}
+                </div>
+                <div class="col-md-2">
+                   {{ form.weight(class="form-control") }}
+                    {% for error in form.weight.errors %}
+                        <h6 class="small text-left text-danger">
+                            {{error}}
+                        </h6>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8 text-left">kg</div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.activity.label() }}
+                </div>
+                <div class="col-md-4">
+                   {{ form.activity(class="form-control") }}
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2">
+                    {{ form.budget.label() }}
+                </div>
+                <div class="col-md-2 danger">
+                   {{ form.budget(class="form-control text-success font-weight-bold font-italic", readonly=true) }}
+                </div>
+                <div class="col-md-8 text-left">Calories</div>
+            </div>
+            <div class="form-group row align-items-center">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+{% endblock %}
