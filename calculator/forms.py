@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, RadioField, SubmitField, SelectField, IntegerField, BooleanField, PasswordField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, NumberRange, Length, Email, EqualTo, ValidationError
-from calculator.routes_cal import User
+from calculator.routes import User
 from datetime import datetime
 
 class BudgetForm(FlaskForm):

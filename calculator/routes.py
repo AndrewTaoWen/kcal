@@ -1,16 +1,16 @@
 import flask_bcrypt
 from calculator import app
 from flask import render_template, redirect, url_for, flash, request, session
-from calculator.models_cal import User, TrackingHistory
-from calculator.forms_cal import BudgetForm, IntakeForm, ExpenditureForm, RegisterForm, LoginForm, HistoryForm
-from calculator.calculator_cal import calculate_budget, calculate_intake, calculate_expen
+from calculator.models import User, TrackingHistory
+from calculator.forms import BudgetForm, IntakeForm, ExpenditureForm, RegisterForm, LoginForm, HistoryForm
+from calculator.calculator import calculate_budget, calculate_intake, calculate_expen
 from calculator import db
 from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route("/")
 @app.route("/home")
 def home_page():
-    return render_template("home_cal.html")
+    return render_template("home.html")
 
 @app.route("/budget", methods=['GET', 'POST'])
 def budget_page():
@@ -29,7 +29,7 @@ def budget_page():
         session.permanent = False
         session['budget'] = calculated_budget
 
-    return render_template("budget_cal.html", form=form)
+    return render_template("budget.html", form=form)
 
 @app.route("/intake", methods=['GET', 'POST'])
 def intake_page():
@@ -41,7 +41,7 @@ def intake_page():
     if form.validate_on_submit():
         intake = calculate_intake(form)
         session['intake'] = intake
-    return render_template("intake_cal.html", form=form)
+    return render_template("intake.html", form=form)
 
 @app.route("/expenditure", methods=['GET', 'POST'])
 def expenditure_page():
@@ -57,7 +57,7 @@ def expenditure_page():
         expenditure = calculate_expen(form, bform)
         session['expenditure'] = expenditure
 
-    return render_template("expenditure_cal.html", form=form)
+    return render_template("expenditure.html", form=form)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register_page():
@@ -71,7 +71,7 @@ def register_page():
         login_user(user_to_create)
         return redirect(url_for('budget_page'))
 
-    return render_template("register_cal.html", form=form)
+    return render_template("register.html", form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
@@ -83,7 +83,7 @@ def login_page():
             return redirect(url_for('budget_page'))
         else:
             form.error_msg.data = 'Username and password are not matched! Please try again'
-    return render_template('login_cal.html', form=form)
+    return render_template('login.html', form=form)
 
 @app.route('/logout')
 def logout_page():
@@ -115,4 +115,4 @@ def history_page():
             h.expenditure = session['expenditure'] or 0
         db.session.commit()
 
-    return render_template("history_cal.html", history=history, form=form)
+    return render_template("history.html", history=history, form=form)
