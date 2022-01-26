@@ -16,7 +16,7 @@
                             Calorie budget:
                         </h3>
                         <h1 class="h1 mb-3 font-weight-bold font-italic" style="color: #8bc34a">
-                            {{session['budget']}}
+                            {{session['budget'] or 0}}
                         </h1>
              </div>
              <div class="col-md-4">
@@ -24,7 +24,7 @@
                             Calorie intake:
                         </h3>
                         <h1 class="h1 mb-3 font-weight-bold font-italic" style="color: orangered">
-                            {{session['intake']}}
+                            {{session['intake'] or 0}}
                         </h1>
              </div>
              <div class="col-md-4">
@@ -32,7 +32,7 @@
                             Calorie Expenditure:
                         </h3>
                         <h1 class="h1 mb-3 font-weight-bold font-italic" style="color: #8bc34a">
-                            {{session['expenditure']}}
+                            {{session['expenditure'] or 0}}
                         </h1>
              </div>
          </div>

@@ -19,6 +19,8 @@ def budget_page():
 
     if current_user.is_authenticated:
         session['budget'] = current_user.budget
+    elif 'budget' not in session:
+        session['budget'] = 0
 
     if form.validate_on_submit():
         calculated_budget = calculate_budget(form)
@@ -32,9 +34,11 @@ def budget_page():
 @app.route("/intake", methods=['GET', 'POST'])
 def intake_page():
 
+    if 'intake' not in session:
+        session['intake'] = 0
+
     form = IntakeForm()
     if form.validate_on_submit():
-        # TODO Calculate expenditure
         intake = calculate_intake(form)
         session['intake'] = intake
     return render_template("intake_cal.html", form=form)
@@ -44,6 +48,9 @@ def expenditure_page():
 
     form = ExpenditureForm()
     bform = BudgetForm()
+
+    if 'expenditure' not in session:
+        session['expenditure'] = 0
 
     if form.validate_on_submit():
         # TODO Calculate expenditure
@@ -97,15 +104,15 @@ def history_page():
         h = history.filter_by(tracking_date=form.tracking_date.data).first()
         if not h:
             h = TrackingHistory(budget=current_user.budget,
-                                intake=session['intake'],
-                                expenditure=session['expenditure'],
+                                intake=session['intake'] or 0,
+                                expenditure=session['expenditure'] or 0,
                                 userid=current_user.id,
                                 tracking_date=form.tracking_date.data)
             db.session.add(h)
         else:
             h.budget = current_user.budget
-            h.intake = session['intake']
-            h.expenditure = session['expenditure']
+            h.intake = session['intake'] or 0
+            h.expenditure = session['expenditure'] or 0
         db.session.commit()
 
     return render_template("history_cal.html", history=history, form=form)
