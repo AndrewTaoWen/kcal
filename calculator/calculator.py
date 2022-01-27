@@ -34,28 +34,28 @@ def calculate_intake(form):
 
     return total
 
-def calculate_expen(form, w):
+def calculate_expen(form, weight):
     total = 0
-    total += (form.walking_amt.data * w * 3.5 * 3.3)/200
-    total += (form.jogging_amt.data * w * 3.5 * 8)/200
-    total += (form.running_amt.data * w * 3.5 * 11)/200
-    total += (form.biking_amt.data * w * 3.5 * 8)/200
-    total += (form.swimming_amt.data * w * 3.5 * 7)/200
-    total += (form.basketball_amt.data * w * 3.5 * 8)/200
-    total += (form.soccer_amt.data * w * 3.5 * 7)/200
-    total += (form.badminton_amt.data * w * 3.5 * 4.5)/200
-    total += (form.football_amt.data * w * 3.5 * 8)/200
-    total += (form.tennis_amt.data * w * 3.5 * 7)/200
-    total += (form.baseball_amt.data * w * 3.5 * 5)/200
-    total += (form.tabletennis_amt.data * w * 3.5 * 6)/200
-    total += (form.hockey_amt.data * w * 3.5 * 8)/200
-    total += (form.lifting_amt.data * w * 3.5 * 8)/200
-    total += (form.martialarts_amt.data * w * 3.5 * 10)/200
-    total += (form.skippingrope_amt.data * w * 3.5 * 8)/200
-    total += (form.dancing_amt.data * w * 3.5 * 3)/200
-    total += (form.HIIT_amt.data * w * 3.5 * 8)/200
-    total += (form.skiing_amt.data * w * 3.5 * 6)/200
-    total += (form.snowboarding_amt.data * w * 3.5 * 5.3)/200
+    total += (form.walking_amt.data * weight * 3.5 * 3.3) / 200
+    total += (form.jogging_amt.data * weight * 3.5 * 8) / 200
+    total += (form.running_amt.data * weight * 3.5 * 11) / 200
+    total += (form.biking_amt.data * weight * 3.5 * 8) / 200
+    total += (form.swimming_amt.data * weight * 3.5 * 7) / 200
+    total += (form.basketball_amt.data * weight * 3.5 * 8) / 200
+    total += (form.soccer_amt.data * weight * 3.5 * 7) / 200
+    total += (form.badminton_amt.data * weight * 3.5 * 4.5) / 200
+    total += (form.football_amt.data * weight * 3.5 * 8) / 200
+    total += (form.tennis_amt.data * weight * 3.5 * 7) / 200
+    total += (form.baseball_amt.data * weight * 3.5 * 5) / 200
+    total += (form.tabletennis_amt.data * weight * 3.5 * 6) / 200
+    total += (form.hockey_amt.data * weight * 3.5 * 8) / 200
+    total += (form.lifting_amt.data * weight * 3.5 * 8) / 200
+    total += (form.martialarts_amt.data * weight * 3.5 * 10) / 200
+    total += (form.skippingrope_amt.data * weight * 3.5 * 8) / 200
+    total += (form.dancing_amt.data * weight * 3.5 * 3) / 200
+    total += (form.HIIT_amt.data * weight * 3.5 * 8) / 200
+    total += (form.skiing_amt.data * weight * 3.5 * 6) / 200
+    total += (form.snowboarding_amt.data * weight * 3.5 * 5.3) / 200
     total += form.others_amt.data
 
     return int(total)

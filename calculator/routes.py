@@ -23,6 +23,7 @@ def budget_page():
         session['budget'] = 0
 
     if form.validate_on_submit():
+        session['weight'] = form.weight.data
         calculated_budget = calculate_budget(form)
         current_user.budget = calculated_budget
         db.session.commit()
@@ -47,14 +48,14 @@ def intake_page():
 def expenditure_page():
 
     form = ExpenditureForm()
-    bform = BudgetForm()
-    weight = bform.weight.data
+    if 'weight' not in session:
+         session['weight'] = 65
 
     if 'expenditure' not in session:
         session['expenditure'] = 0
 
     if form.validate_on_submit():
-        expenditure = calculate_expen(form, weight)
+        expenditure = calculate_expen(form, session['weight'])
         session['expenditure'] = expenditure
 
     return render_template("expenditure.html", form=form)
