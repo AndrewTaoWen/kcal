@@ -34,9 +34,8 @@ def calculate_intake(form):
 
     return total
 
-def calculate_expen(form, bform):
+def calculate_expen(form, w):
     total = 0
-    w = bform.weight.data
     total += (form.walking_amt.data * w * 3.5 * 3.3)/200
     total += (form.jogging_amt.data * w * 3.5 * 8)/200
     total += (form.running_amt.data * w * 3.5 * 11)/200

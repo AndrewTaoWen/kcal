@@ -15,7 +15,7 @@ class BudgetForm(FlaskForm):
 
     # (6, 'Extra Active: very intense exercise daily, or physical job')
 
-    age = IntegerField(label='Age', default=25, validators=[NumberRange(min=15, max=80, message="Ages 15-80")])
+    age = IntegerField(label='Age', default=18, validators=[NumberRange(min=15, max=80, message="Ages 15-80")])
     gender = RadioField('Gender', choices=[('m', 'Male'), ('f', 'Female')], default='m')
     height = IntegerField('Height', default="175", validators=[NumberRange(min=1, message="Height > 0")])
     weight = IntegerField('Weight', default="65", validators=[NumberRange(min=1, message="Weight > 0")])
@@ -86,7 +86,7 @@ class RegisterForm(FlaskForm):
     def validate_username(self, user_to_check):
         user = User.query.filter_by(username=user_to_check.data).first()
         if user:
-            raise ValidationError('Username already exists! Please try a different username')
+            raise ValidationError('Username already in use! Please try a different username')
 
     def validate_email_address(self, email_address_to_check):
         email_address = User.query.filter_by(email_address=email_address_to_check.data).first()

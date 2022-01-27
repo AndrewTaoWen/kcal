@@ -48,13 +48,13 @@ def expenditure_page():
 
     form = ExpenditureForm()
     bform = BudgetForm()
+    weight = bform.weight.data
 
     if 'expenditure' not in session:
         session['expenditure'] = 0
 
     if form.validate_on_submit():
-        # TODO Calculate expenditure
-        expenditure = calculate_expen(form, bform)
+        expenditure = calculate_expen(form, weight)
         session['expenditure'] = expenditure
 
     return render_template("expenditure.html", form=form)
@@ -89,7 +89,6 @@ def login_page():
 def logout_page():
     session.clear()
     logout_user()
-    flash('You have been logged out', category='info')
     return redirect(url_for('home_page'))
 
 @app.route("/history", methods=['GET', 'POST'])
@@ -100,7 +99,6 @@ def history_page():
     history = TrackingHistory.query.filter_by(userid=current_user.id).order_by(TrackingHistory.tracking_date.desc())
 
     if request.method == 'POST':
-        print(form.tracking_date.data)
         h = history.filter_by(tracking_date=form.tracking_date.data).first()
         if not h:
             h = TrackingHistory(budget=current_user.budget,
