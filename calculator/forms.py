@@ -13,8 +13,6 @@ class BudgetForm(FlaskForm):
                        (4, 'Active: daily exercise or intense exercise 3-4 times/week'),
                        (5, 'Very Active: intense exercise 6-7 times/week')]
 
-    # (6, 'Extra Active: very intense exercise daily, or physical job')
-
     age = IntegerField(label='Age', default=18, validators=[NumberRange(min=15, max=80, message="Ages 15-80")])
     gender = RadioField('Gender', choices=[('m', 'Male'), ('f', 'Female')], default='m')
     height = IntegerField('Height', default="175", validators=[NumberRange(min=1, message="Height > 0")])
