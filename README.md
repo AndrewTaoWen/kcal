@@ -1,6 +1,6 @@
 # KCAL Calorie Counter Application
 
-A personal project of calorie counting and tracking. 
+A personal project of calorie counting and tracking. (https://kcal-cc.herokuapp.com/)
 
 ## Installation
 
