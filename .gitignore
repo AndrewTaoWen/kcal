@@ -96,3 +96,8 @@ ENV/
 .idea
 .vscode/*
 settings.json
+
+*.db
+instance/
+__pycache__/
+.env
